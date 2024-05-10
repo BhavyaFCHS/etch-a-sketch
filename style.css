@@ -6,6 +6,19 @@ h1 {
     text-align: center;
 }
 
+button {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.options {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+    margin: 24px;
+}
+
 .container {
     border: 1px solid black;
 
