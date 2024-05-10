@@ -1,9 +1,11 @@
 let gridSize = 600;
+let opacityMultiplier = 1;
 
 const container = document.querySelector(".container");
 const options = document.querySelector(".options");
 const gridSizeInput = document.querySelector("#grid-size");
 const containerSizeInput = document.querySelector("#container-size");
+const multicolorSquares = document.querySelector("#rgb");
 
 function setGridSize(gridSize) {
     container.style.width = `${gridSize}px`;
@@ -19,7 +21,16 @@ function createGrid(size) {
         square.style.height = `${width}px`;
 
         square.addEventListener("mouseenter", e => {
-            e.target.style.backgroundColor = "rgb(11, 44, 79)";
+            if(multicolorSquares.checked) {
+                let letters = "0123456789ABCDEF";
+                let color = "#";
+                for (let i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                e.target.style.backgroundColor = color;
+            } else {
+                e.target.style.backgroundColor = "rgb(11, 44, 79)";
+            }
         });
 
         container.append(square)
@@ -70,5 +81,6 @@ options.addEventListener("click", e => {
                     changeGridSize(50);
                 }
             }
+            break;
     }
 });
