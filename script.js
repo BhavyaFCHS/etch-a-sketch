@@ -2,10 +2,11 @@ let gridSize = 600;
 let opacityMultiplier = 1;
 
 const container = document.querySelector(".container");
-const options = document.querySelector(".options");
+const options = document.querySelectorAll(".options");
 const gridSizeInput = document.querySelector("#grid-size");
 const containerSizeInput = document.querySelector("#container-size");
 const multicolorSquares = document.querySelector("#rgb");
+const showGridLines = document.querySelector("#show-grid");
 
 function setGridSize(gridSize) {
     container.style.width = `${gridSize}px`;
@@ -52,7 +53,7 @@ function changeGridSize(size) {
 setGridSize(gridSize);
 createGrid(50);
 
-options.addEventListener("click", e => {
+options.forEach(n => n.addEventListener("click", e => {
     switch(e.target.id) {
         case "clear-grid":
             clearGrid();
@@ -82,5 +83,14 @@ options.addEventListener("click", e => {
                 }
             }
             break;
+        case "show-grid":
+            if(showGridLines.checked) {
+                container.childNodes.forEach(n => n.classList.add("show-border"));
+            } else {
+                container.childNodes.forEach(n => n.classList.remove("show-border"));
+            }
+            break;
+        default:
+            console.log("clicked");
     }
-});
+}));
