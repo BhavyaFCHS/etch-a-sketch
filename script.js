@@ -1,4 +1,4 @@
-let gridSize = 400;
+let gridSize = 600;
 
 const container = document.querySelector(".container");
 const options = document.querySelector(".options");
@@ -15,9 +15,13 @@ function createGrid(size) {
     for(let i = 0; i < size**2; i++) {
         const square = document.createElement("div");
         const width = gridSize / size;
-        const height = gridSize / size;
         square.style.width = `${width}px`;
-        square.style.width = `${height}px`;
+        square.style.height = `${width}px`;
+
+        square.addEventListener("mouseenter", e => {
+            e.target.style.backgroundColor = "rgb(11, 44, 79)";
+        });
+
         container.append(square)
     }
 }
@@ -26,6 +30,7 @@ function clearGrid() {
     container.childNodes.forEach(
         n => n.style.backgroundColor = container.style.backgroundColor
     );
+    console.log(`Num Divs in Grid: ${container.childNodes.length}`);
 }
 
 function changeGridSize(size) {
@@ -35,10 +40,6 @@ function changeGridSize(size) {
 
 setGridSize(gridSize);
 createGrid(50);
-
-container.addEventListener("mouseover", e => {
-    e.target.style.backgroundColor = "rgb(11, 44, 79)";
-});
 
 options.addEventListener("click", e => {
     switch(e.target.id) {
