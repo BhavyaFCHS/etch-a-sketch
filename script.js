@@ -72,15 +72,27 @@ options.forEach(n => n.addEventListener("click", e => {
                 if(containerSizeInput.value > 1000) {
                     gridSize = 1000;
                     setGridSize(gridSize);
-                    changeGridSize(50);
+                    if(gridSizeInput.value) {
+                        changeGridSize(gridSizeInput.value);
+                    } else {
+                        changeGridSize(50);
+                    }
                 } else if(containerSizeInput.value < 1) {
                     gridSize = 1;
                     setGridSize(gridSize);
-                    changeGridSize(1);
+                    if(gridSizeInput.value) {
+                        changeGridSize(gridSizeInput.value);
+                    } else {
+                        changeGridSize(1);
+                    }
                 } else {
                     gridSize = containerSizeInput.value;
                     setGridSize(gridSize);
-                    changeGridSize(50);
+                    if(gridSizeInput.value) {
+                        changeGridSize(gridSizeInput.value);
+                    } else {
+                        changeGridSize(50);
+                    }
                 }
             }
             break;
