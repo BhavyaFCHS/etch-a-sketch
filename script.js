@@ -20,6 +20,7 @@ function createGrid(size) {
         const width = gridSize / size;
         square.style.width = `${width}px`;
         square.style.height = `${width}px`;
+        if(showGridLines.checked) square.classList.add("show-border");
 
         square.addEventListener("mouseenter", e => {
             if(multicolorSquares.checked) {
